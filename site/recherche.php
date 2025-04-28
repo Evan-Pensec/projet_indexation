@@ -1,6 +1,6 @@
 <?php
 require_once 'menu.php';
-require_once 'Document.class.php';
+require_once '../class/Document.class.php';
 
 $message = '';
 $resultats = [];
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recherche de Documents</title>
-    <link rel="stylesheet" href="minh_styles.css">
+    <link rel="stylesheet" href="../styles/minh_styles.css">
 </head>
 <body>
     <div class="container">

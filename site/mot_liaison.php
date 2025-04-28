@@ -1,6 +1,6 @@
 <?php
 require_once 'menu.php';
-require_once 'MotLiaison.class.php';
+require_once '../class/MotLiaison.class.php';
 
 $message = '';
 $motLiaison = new MotLiaison();
@@ -15,35 +15,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($_POST['action'] === 'create') {
                 if ($motLiaison->create()) {
-                    $message = "Mot-clé ajouté";
+                    $message = "Mot de liaison ajouté";
                     $motLiaison = new MotLiaison();
                 } else {
-                    $message = "Erreur lors de l'ajout du mot-clé";
+                    $message = "Erreur lors de l'ajout du mot de liaison";
                 }
             } elseif ($_POST['action'] === 'update' && isset($_POST['numMotLiaison'])) {
                 $motLiaison->setNumMotLiaison($_POST['numMotLiaison']);
                 if ($motLiaison->update()) {
-                    $message = "Mot-clé mis à jour";
+                    $message = "Mot de liaison mis à jour";
                     $mode = 'create';
                     $motLiaison = new MotLiaison();
                 } else {
-                    $message = "Erreur lors de la mise à jour du mot-clé";
+                    $message = "Erreur lors de la mise à jour du mot de liaison";
                 }
             }
         }
     } elseif (isset($_POST['delete']) && isset($_POST['numMotLiaison'])) {
         $motToDelete = MotLiaison::getById($_POST['numMotLiaison']);
         if ($motToDelete && $motToDelete->delete()) {
-            $message = "Mot-clé supprimé";
+            $message = "Mot de liaison supprimé";
         } else {
-            $message = "Erreur lors de la suppression du mot-clé";
+            $message = "Erreur lors de la suppression du mot de liaison";
         }
     } elseif (isset($_POST['edit']) && isset($_POST['numMotLiaison'])) {
         $motLiaison = MotLiaison::getById($_POST['numMotLiaison']);
         if ($motLiaison) {
             $mode = 'update';
         } else {
-            $message = "Mot-clé non trouvé";
+            $message = "mot de liaison non trouvé";
         }
     }
 }
@@ -57,7 +57,7 @@ $motsLiaison = MotLiaison::getAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion des Mots-clés</title>
-    <link rel="stylesheet" href="minh_styles.css">
+    <link rel="stylesheet" href="../styles/minh_styles.css">
 </head>
 <body>
     <div class="container">
@@ -69,7 +69,7 @@ $motsLiaison = MotLiaison::getAll();
         <?php endif; ?>
         
         <div class="content">
-            <h2><?php echo ($mode === 'create') ? 'Exclure un mot-clé' : 'Modifier le mot-clé'; ?></h2>
+            <h2><?php echo ($mode === 'create') ? 'Exclure un mot de liaison' : 'Modifier le mot de liaison'; ?></h2>
             
             <form method="post" action="mot_liaison.php" class="form">
                 <input type="hidden" name="action" value="<?php echo $mode; ?>">
@@ -92,10 +92,10 @@ $motsLiaison = MotLiaison::getAll();
                 </div>
             </form>
             
-            <h2>Liste des mots-clés</h2>
+            <h2>Liste des mots de liaison</h2>
             
             <?php if (empty($motsLiaison)) : ?>
-                <p>Aucun mot-clé disponible</p>
+                <p>Aucun mot de liaison disponible</p>
             <?php else : ?>
                 <table class="table">
                     <thead>
