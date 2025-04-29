@@ -2,7 +2,6 @@
 require_once 'menu.php';
 require_once '../class/Document.class.php';
 
-$message = '';
 $resultats = [];
 $motsRecherche = '';
 $documentDetails = null;
@@ -38,9 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1>Recherche de Documents</h1>
         <?php afficherMenu('recherche'); ?>
         
-        <?php if (!empty($message)) : ?>
-            <div class="message"><?php echo $message; ?></div>
-        <?php endif; ?>
+        
         
         <div class="content">
             <h2>Rechercher des documents par mots-clés</h2>

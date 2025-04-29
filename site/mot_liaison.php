@@ -2,7 +2,6 @@
 require_once 'menu.php';
 require_once '../class/MotLiaison.class.php';
 
-$message = '';
 $motLiaison = new MotLiaison();
 $mode = 'create';
 
@@ -52,9 +51,7 @@ $motsLiaison = MotLiaison::getAll();
         <h1>Gestion des Mots-clés</h1>
         <?php afficherMenu('mot_liaison'); ?>
         
-        <?php if (!empty($message)) : ?>
-            <div class="message"><?php echo $message; ?></div>
-        <?php endif; ?>
+        
         
         <div class="content">
             <h2><?php echo ($mode === 'create') ? 'Exclure un mot de liaison' : 'Modifier le mot de liaison'; ?></h2>

@@ -2,7 +2,6 @@
 require_once 'menu.php';
 require_once '../class/Document.class.php';
 
-$message = '';
 $document = new Document();
 $mode = 'create';
 
@@ -54,10 +53,6 @@ $documents = Document::getAll();
     <div class="container">
         <h1>Gestion des Documents</h1>
         <?php afficherMenu('document'); ?>
-        
-        <?php if (!empty($message)) : ?>
-            <div class="message"><?php echo $message; ?></div>
-        <?php endif; ?>
         
         <div class="content">
             <h2><?php echo ($mode === 'create') ? 'Ajouter un nouveau document' : 'Modifier le document'; ?></h2>
