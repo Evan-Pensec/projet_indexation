@@ -26,7 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($_POST['delete']) && isset($_POST['numMotLiaison'])) {
         $motToDelete = MotLiaison::getById($_POST['numMotLiaison']);
-        
+        if ($motToDelete) {
+            $motToDelete->delete();
+        }
     } elseif (isset($_POST['edit']) && isset($_POST['numMotLiaison'])) {
         $motLiaison = MotLiaison::getById($_POST['numMotLiaison']);
         if ($motLiaison) {
@@ -43,12 +45,12 @@ $motsLiaison = MotLiaison::getAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des Mots-clés</title>
+    <title>Gestion des Mots de liaison</title>
     <link rel="stylesheet" href="../styles/minh_styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Gestion des Mots-clés</h1>
+        <h1>Gestion des Mots de liaison</h1>
         <?php afficherMenu('mot_liaison'); ?>
         
         
