@@ -15,35 +15,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($_POST['action'] === 'create') {
                 if ($motLiaison->create()) {
-                    $message = "Mot de liaison ajouté";
                     $motLiaison = new MotLiaison();
-                } else {
-                    $message = "Erreur lors de l'ajout du mot de liaison";
                 }
             } elseif ($_POST['action'] === 'update' && isset($_POST['numMotLiaison'])) {
                 $motLiaison->setNumMotLiaison($_POST['numMotLiaison']);
                 if ($motLiaison->update()) {
-                    $message = "Mot de liaison mis à jour";
                     $mode = 'create';
                     $motLiaison = new MotLiaison();
-                } else {
-                    $message = "Erreur lors de la mise à jour du mot de liaison";
                 }
             }
         }
     } elseif (isset($_POST['delete']) && isset($_POST['numMotLiaison'])) {
         $motToDelete = MotLiaison::getById($_POST['numMotLiaison']);
-        if ($motToDelete && $motToDelete->delete()) {
-            $message = "Mot de liaison supprimé";
-        } else {
-            $message = "Erreur lors de la suppression du mot de liaison";
-        }
+        
     } elseif (isset($_POST['edit']) && isset($_POST['numMotLiaison'])) {
         $motLiaison = MotLiaison::getById($_POST['numMotLiaison']);
         if ($motLiaison) {
             $mode = 'update';
-        } else {
-            $message = "mot de liaison non trouvé";
         }
     }
 }

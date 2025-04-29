@@ -13,10 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!empty($motsRecherche)) {
             $resultats = Document::rechercher($motsRecherche);
             if (empty($resultats)) {
-                $message = "Aucun document trouvé pour cette recherche";
             }
-        } else {
-            $message = "Veuillez saisir des mots-clés pour la recherche";
         }
     } elseif (isset($_POST['voir_document']) && isset($_POST['numDoc'])) {
         $documentDetails = Document::getById($_POST['numDoc']);

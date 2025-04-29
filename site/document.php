@@ -17,35 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
             if ($_POST['action'] === 'create') {
                 if ($document->create()) {
-                    $message = "Document ajouté avec succès !";
                     $document = new Document();
-                } else {
-                    $message = "Erreur lors de l'ajout du document.";
                 }
             } elseif ($_POST['action'] === 'update' && isset($_POST['numDoc'])) {
                 $document->setNumDoc($_POST['numDoc']);
                 if ($document->update()) {
-                    $message = "Document mis à jour avec succès !";
                     $mode = 'create';
                     $document = new Document();
-                } else {
-                    $message = "Erreur lors de la mise à jour du document.";
                 }
             }
         }
     } elseif (isset($_POST['delete']) && isset($_POST['numDoc'])) {
         $docToDelete = Document::getById($_POST['numDoc']);
         if ($docToDelete && $docToDelete->delete()) {
-            $message = "Document supprimé avec succès !";
-        } else {
-            $message = "Erreur lors de la suppression du document.";
-        }
+        } 
     } elseif (isset($_POST['edit']) && isset($_POST['numDoc'])) {
         $document = Document::getById($_POST['numDoc']);
         if ($document) {
             $mode = 'update';
-        } else {
-            $message = "Document non trouvé.";
         }
     }
 }
@@ -123,7 +112,7 @@ $documents = Document::getAll();
                                     <form method="post" action="document.php" style="display:inline;">
                                         <input type="hidden" name="numDoc" value="<?php echo $doc->getNumDoc(); ?>">
                                         <button type="submit" name="edit" class="btn btn-small">Modifier</button>
-                                        <button type="submit" name="delete" class="btn btn-small btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce document ?')">Supprimer</button>
+                                        <button type="submit" name="delete" class="btn btn-small btn-danger">Supprimer</button>
                                     </form>
                                 </td>
                             </tr>
