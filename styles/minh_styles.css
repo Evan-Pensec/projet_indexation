@@ -2,14 +2,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
     color: #333;
-    background-color: #f8f8f8;
+    background-color: #464545;
     padding: 20px;
 }
 
 .container {
     max-width: 1000px;
     margin: 0 auto;
-    background-color: #fff;
+    background-color: #d1cdcd;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -30,7 +30,6 @@ h2 {
     font-size: 1.4rem;
 }
 
-/* Menu de navigation */
 .menu {
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
@@ -63,12 +62,10 @@ h2 {
     border-bottom: 2px solid #555;
 }
 
-/* Contenu principal */
 .content {
     padding: 10px 0;
 }
 
-/* Formulaires */
 .form {
     margin-bottom: 30px;
 }
