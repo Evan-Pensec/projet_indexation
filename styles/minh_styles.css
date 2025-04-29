@@ -147,14 +147,6 @@ h2 {
     font-weight: 600;
 }
 
-.message {
-    padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
-    border-left: 4px solid #4a4a4a;
-    color: #333;
-}
-
 .resultat-item {
     border-bottom: 1px solid #eee;
     padding: 15px 0;
